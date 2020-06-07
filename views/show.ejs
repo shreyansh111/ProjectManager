@@ -1,0 +1,58 @@
+<%-include("partials/header")%>	
+<div class="container"> 
+	
+ <%tasks.forEach(function(task){%>
+  <%if(currentUser && task.Owner.id.equals(currentUser._id)){%>
+	     <div class="row text-center" style="display: flex; flex-wrap: wrap; ">
+		 <div class="col-md-4" style="border: 1px solid #92d6bf;margin: auto; margin-bottom: 10px;">
+		 	<h4><%=task.name%></h4>
+		 	<p><%=task.Days%></p>
+		 	<p><a href="<%=task._id%>" class="btn btn-info">More Info</a></p>
+		 </div>
+	</div>
+	<%}%>
+	<%})%>
+	<%teams.forEach(function(team){%>
+	<h1 style=" width:300px margin-bottom:20px; margin-top: 20px; text-align: center;">Group Task</h1>
+	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+		
+		<div class="col-md-4" style="border: 1px solid #92d6bf; margin:auto;margin-bottom: 10px;">
+			<h4><%=team.name%></h4>
+			<p><%=team.Days%></p>
+			<% 
+                    check=function() {
+			           var x=false
+			           team.Teammates.forEach(function(member){
+				        if(member.id==currentUser._id){
+			                 x=true
+			                console.log(x)
+			            }
+			        }) 
+			           return x
+			       }
+			%>
+			<%if(currentUser&&((team.Leader.id.equals(currentUser._id))||(check())){%>
+
+				    <p><a href="/team/<%=team._id%>" class="btn btn-info">More Info</a></p>
+			<%}else{%>
+			   <form method="POST" action="/team/<%=team._id%>/join">
+			   	<button class="btn btn-primary">Join</button>
+			   </form>
+			   
+			   <%}%>
+		</div>
+	</div>
+	<%})%>
+	<a href="/" class="btn btn-primary">Go Back</a>
+
+</div>
+	
+<%-include("partials/footer")%>
+
+
+
+
+
+
+
+</div>

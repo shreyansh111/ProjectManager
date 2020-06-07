@@ -1,0 +1,18 @@
+<%-include("partials/header")%>
+<div class="container">
+	<h1 style="text-transform: capitalize;"><%=task.name%></h1>
+<h2>Number of days left to complete the task - <%=task.Days%></h2>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%=task.progess%>" aria-valuemin="0" aria-valuemax="100" style="width:<%=task.progess%>%;">
+    <%=task.progess%>%
+  </div>
+</div>
+<p><%=task.discription%></p>
+<a href="/<%=task._id%>/edit" class="btn btn-warning">Edit</a>
+<form id="delete" method="POST" action="<%=task._id%>?_method=DELETE" style="display: inline;">
+	<button class="btn btn-danger"> Delete</button>
+</form>
+<a href="/show" class="btn btn-default">Go Back</a>
+</div>
+
+<%-include("partials/footer")%>

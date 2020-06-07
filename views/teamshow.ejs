@@ -1,0 +1,25 @@
+<%-include("partials/header")%>
+<div class="container">
+	<h1 style="text-transform: capitalize;"><%=team.name%></h1>
+<h2>Number of days left to complete the task - <%=team.Days%></h2>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%=team.progress1%>" aria-valuemin="0" aria-valuemax="100" style="width:<%=team.progress1%>%;">
+    <%=team.progress1%>%
+  </div>
+</div>
+<div class="progress">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%=team.progress2%>" aria-valuemin="0" aria-valuemax="100" style="width:<%=team.progress2%>%">
+    <span class="sr-only">40% Complete (success)</span>
+  </div>
+  </div>
+  <div class="progress">
+  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%=team.progress3%>" aria-valuemin="0" aria-valuemax="100" style="width:<%=team.progress3%>%">
+    <span class="sr-only">60% Complete (warning)</span>
+  </div>
+</div>
+<p><%=team.discription%></p>
+
+<a href="/show" class="btn btn-default">Go Back</a>
+</div>
+
+<%-include("partials/footer")%>
